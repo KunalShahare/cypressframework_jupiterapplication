@@ -3,3 +3,9 @@
 
 # Ignore report directory
 /mochawesome-report
+
+# Ignore screenshots
+/cypress/screenshots
+
+# Ignore videos
+/cypress/videos

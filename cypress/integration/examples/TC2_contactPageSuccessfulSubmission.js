@@ -29,7 +29,7 @@ describe('Jupiter Toys - Feedback Successful Submission', function() {
         contactPage.getContactSubmitButton().click();
            
         // Validate the Successful Submission message
-        Cypress.config('defaultCommandTimeout', 15000);
+        Cypress.config('defaultCommandTimeout', 20000);
         contactPage.getSubmissionAlert().should("contain","Thanks "+ this.data.forename +", we appreciate your feedback.");
                  
     })

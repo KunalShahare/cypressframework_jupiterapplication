@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 import HomePage from '../page/HomePage';
 import ShopPage from '../page/ShopPage';
+import CartPage from '../page/CartPage';
 
 describe('Jupiter Toys - Cart Menu Items', function() {
     
@@ -15,6 +16,7 @@ describe('Jupiter Toys - Cart Menu Items', function() {
     it('Verify the user selected items on Cart Menu', function() {
         const homePage = new HomePage();
         const shopPage = new ShopPage();
+        const cartPage = new CartPage();
 
         // Navigate to Contact Page
         cy.visit(Cypress.env('url'));
@@ -32,7 +34,7 @@ describe('Jupiter Toys - Cart Menu Items', function() {
         var actualProduct = new Array();
         var expectedProduct = new Array();
         
-        cy.get('tr td:nth-child(1).ng-binding').each(($el, index) => {
+        cartPage.getCartItemList().each(($el, index) => {
             var item=$el.text();
             item = item.trim();
             if(actualProduct.indexOf(item) === -1)

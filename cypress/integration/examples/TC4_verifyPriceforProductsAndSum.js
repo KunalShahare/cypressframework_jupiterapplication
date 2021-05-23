@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 import HomePage from '../page/HomePage';
 import ShopPage from '../page/ShopPage';
+import CartPage from '../page/CartPage';
 
 describe('Jupiter Toys - E2E Test Case', function() {
     
@@ -15,6 +16,7 @@ describe('Jupiter Toys - E2E Test Case', function() {
     it('Verify the price for each product, each product subtotal and sum total of all products', function() {
         const homePage = new HomePage();
         const shopPage = new ShopPage();
+        const cartPage = new CartPage();
 
         // Navigate to Contact Page
         cy.visit(Cypress.env('url'));
@@ -32,7 +34,7 @@ describe('Jupiter Toys - E2E Test Case', function() {
         // Verify the Total Sum of all Products = sum(subtotal)
         // *******************************************************
         var sum = 0;
-        cy.get('tr td:nth-child(4).ng-binding').each((subTotal, index, $list) => {
+        cartPage.getCartSubtotalList().each((subTotal, index, $list) => {
             const amount=subTotal.text();
             var res= amount.split("$");
             res= res[1].trim();
@@ -42,7 +44,7 @@ describe('Jupiter Toys - E2E Test Case', function() {
                cy.log(sum);
            })
            
-        cy.get('tfoot > :nth-child(1) > td').then(function(element)
+        cartPage.getCartTotalAmount().then(function(element)
         {
             const amount=element.text();
             var res= amount.split(" ")
@@ -61,7 +63,7 @@ describe('Jupiter Toys - E2E Test Case', function() {
          var quantityArray = new Array();
          var subTotalArray = new Array();
 
-         cy.get('tr td:nth-child(2).ng-binding').each((subTotal, index, $list) => {
+         cartPage.getCartPriceList().each((subTotal, index, $list) => {
              const amount=subTotal.text();
              var price= amount.split("$");
              prodPrice = price[1].trim();
@@ -89,7 +91,7 @@ describe('Jupiter Toys - E2E Test Case', function() {
                     }
                 })
             }
-            cy.get('tr td:nth-child(4).ng-binding').each((subTotal, index, $list) => {
+            cartPage.getCartSubtotalList().each((subTotal, index, $list) => {
                 const amount=subTotal.text();
                 var res= amount.split("$");
                 res= res[1].trim();
