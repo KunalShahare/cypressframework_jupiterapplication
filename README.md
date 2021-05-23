@@ -27,13 +27,13 @@
 
 ## Results
 * CLI Results
-![Results](./CLI_Report.png)
+![Results1](./CLI_Report.PNG)
 
 * mochawesome-report folder will be created under root folder automatically after first run.
 * HTML Report Path `./mochawesome-report/mochawesome.html` <br />
-![Results](./Mochawesome_Report.png)
+![Results2](./Mochawesome_Report.PNG)
 * Dashboard Cypress Report with Screenshot & Video.
 
-![Results](./Dashboard_Results.png)
+![Results3](./Dashboard_Results.PNG)
 
 
